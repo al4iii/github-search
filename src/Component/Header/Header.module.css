@@ -1,0 +1,40 @@
+.header {
+    background-color: blue;
+    height: 75px;
+    display: grid;
+    grid-template-columns: 1fr 2fr 3fr;
+    align-items: center;
+}
+
+.img {
+    display: grid;
+    justify-self: center;
+    width: 40px;
+}
+.img > img {
+    
+    width: 40px;
+}
+
+.textarea {
+    display: grid;
+    justify-content: flex-start;
+}
+
+.button {
+    /* display: grid; 
+    justify-content: flex-start; */
+    margin-left: 7px;
+}
+
+@media screen and (max-width: 600px) {
+    .button {
+        display: grid;
+        justify-content: center;
+        margin: 5px;
+        margin-left: 0;
+    }
+    .textarea {
+        margin-left: 10px;
+    }
+}

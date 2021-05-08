@@ -1,0 +1,46 @@
+.userprofile {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: 8fr;
+}
+
+.profile {
+    display: grid;
+    grid-template-rows: 3fr 1fr 1fr 1fr;
+}
+
+.img>img {
+    width: 300px;
+    height: 300px;
+    border-radius: 200px;
+}
+
+.repos {
+    border-radius: 31px;
+    background: #e0e0e0;
+    box-shadow: 5px 5px 2px #5a5a5a, -5px -5px 2px #ffffff;
+    margin: 15px;
+    width: 500px;
+}
+
+.name {
+    color: blue;
+    padding: 15px 30px;   
+    margin: 0;
+}
+
+.description {
+    padding: 15px 30px;
+    margin: 0;
+}
+
+.paginator {
+    grid-column: 2/3;
+    padding: 0;
+    width: 500px;
+    height: 20px;
+    display: grid;
+    grid-template-columns: repeat(12, 50px);
+    list-style-type: none;
+    cursor: pointer;
+}
