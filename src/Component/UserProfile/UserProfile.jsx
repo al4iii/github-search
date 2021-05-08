@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Repos from "./Repos";
 import {
@@ -11,11 +11,15 @@ import {
   currentPageSelector,
 } from "../../redux/users-selector";
 import slyles from "./UserProfile.module.css";
-import Preloader from "../Preloader/Preloader";
 import { Pagination } from "antd";
 import { getRepos } from "../../redux/users-reduser";
+import {
+  TeamOutlined,
+  UserOutlined,
+  CloseCircleOutlined,
+} from "@ant-design/icons";
 
-const UserProfile = (props) => {
+const UserProfile = () => {
   const totalItemsCount = useSelector(totalCountSelector);
   const pageSize = useSelector(pageSizeSelector);
   const isFetching = useSelector(isFetchingSelector);
@@ -34,13 +38,15 @@ const UserProfile = (props) => {
         <div className={slyles.img}>
           <img src={profile.avatar_url} />
         </div>
-        <a target="_blank" href={`https://github.com/${userName}`}>
-          <h3 className={slyles.name}>{profile.name}</h3>
-        </a>
-        <div>{profile.login}</div>
-        <div>
-          {profile.followers}followers
-          {profile.following}following
+        <div className={slyles.name}>
+          <a target="_blank" href={`https://github.com/${userName}`}>
+            <h3> {profile.name}</h3>
+          </a>
+        </div>
+        <div className={slyles.login}>{profile.login}</div>
+        <div className={slyles.followers}>
+          <TeamOutlined /> {profile.followers} followers <UserOutlined />{" "}
+          {profile.following} following
         </div>
       </div>
       <div className={slyles.img}>
@@ -48,9 +54,13 @@ const UserProfile = (props) => {
           {totalItemsCount === 0 ? "" : `Repositories(${totalItemsCount})`}
         </h2>
         <div className={slyles.rep}>
-          {totalItemsCount === 0
-            ? "Repository list is emply"
-            : repos.map((rep) => <Repos key={rep.id} rep={rep} />)}
+          {totalItemsCount === 0 ? (
+            <div>             
+              <CloseCircleOutlined />  Repository list is emply
+            </div>
+          ) : (
+            repos.map((rep) => <Repos key={rep.id} rep={rep} />)
+          )}
         </div>
       </div>
       {totalItemsCount === 0 ? (

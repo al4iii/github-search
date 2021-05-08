@@ -5,6 +5,7 @@ import usersReducer from "./users-reduser";
 let redusers = combineReducers({
   usersPage: usersReducer,
 });
+
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(redusers, composeEnhancers(applyMiddleware(thunk)));
 window.store = store;

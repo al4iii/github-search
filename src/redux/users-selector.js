@@ -1,6 +1,5 @@
 export const userProfileSelector = (state) => state.usersPage.userProfile;
 export const reposSelector = (state) => state.usersPage.repos;
-export const reposLengthSelector = (state) => state.usersPage.reposLength;
 export const isFetchingSelector = (state) => state.usersPage.toggleIsFetching;
 export const userNameSelector = (state) => state.usersPage.userName;
 export const totalCountSelector = (state) => state.usersPage.totalCount;

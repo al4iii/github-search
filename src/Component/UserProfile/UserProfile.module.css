@@ -6,13 +6,17 @@
 
 .profile {
     display: grid;
-    grid-template-rows: 3fr 1fr 1fr 1fr;
+    grid-template-rows: 3fr 50px 50px 50px;
 }
 
 .img>img {
-    width: 300px;
-    height: 300px;
+    width: 290px;
+    height: 290px;
     border-radius: 200px;
+   
+}
+.img {
+    justify-self: center;
 }
 
 .repos {
@@ -20,15 +24,31 @@
     background: #e0e0e0;
     box-shadow: 5px 5px 2px #5a5a5a, -5px -5px 2px #ffffff;
     margin: 15px;
-    width: 500px;
+    width: 500px; 
+       
 }
 
 .name {
     color: blue;
-    padding: 15px 30px;   
+    padding: 0 30px;
     margin: 0;
+    justify-self: center;
 }
 
+.login{
+    padding: 0 30px;
+    margin: 0; 
+    width: 20px;
+    justify-self: center;
+}
+
+.followers{
+    padding: 0 30px;
+    margin: 0; 
+    height: 150px;
+    width: 250px;
+    justify-self: center;
+}
 .description {
     padding: 15px 30px;
     margin: 0;
@@ -43,4 +63,46 @@
     grid-template-columns: repeat(12, 50px);
     list-style-type: none;
     cursor: pointer;
+    justify-self: center;
+}
+
+@media screen and (max-width: 930px) {
+    .userprofile {
+        grid-template-columns: 500px;
+        grid-template-rows: 1fr 1fr 100px;        
+        justify-content: center;
+        justify-items: center;
+    }
+    .profile {
+        grid-row: 1/2;
+        grid-column: 1/2;
+    }
+    .repos {
+        grid-row: 2/3;
+        grid-column: 1/2;
+        width: 380px;
+    }
+    .paginator {
+        grid-column: 3/4;
+        grid-column: 1/2;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .repos {
+        grid-row: 2/3;
+        grid-column: 1/2;
+        width: 280px;
+    }
+    .paginator {
+        height: 10px;
+        width: 300px;
+        grid-template-columns: repeat(12, 27px);
+    }
+    .img>img {
+        width: 200px;
+        height: 200px;
+        border-radius: 200px;
+       
+    }
 }

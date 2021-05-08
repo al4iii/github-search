@@ -1,9 +1,10 @@
-content{
+content {
     margin: 50px auto;
+    background-color: #E5E5E5;
 }
 
-.h2{
+.h2 {
     text-align: center;
     padding: auto;
-    color: blueviolet;
+    color: gray;
 }

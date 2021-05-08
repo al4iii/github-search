@@ -10,7 +10,12 @@ const SearchUsers = () => {
   const searchUser = () => dispatch(getUsers(user));
   return (
     <div>
-      <input autoFocus={true} value={user} onChange={onStatusChenge} />
+      <input
+        autoFocus={true}
+        value={user}
+        onChange={onStatusChenge}
+        placeholder={"Enter GitHub Username"}
+      />
       <button onClick={searchUser} className={styles.button}>
         search
       </button>

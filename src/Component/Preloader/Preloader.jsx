@@ -5,7 +5,7 @@ import loader from "./../../img/loader.svg";
 const Preloader = () => {
   return (
     <div className={styles.loader}>
-      <img src={loader} alt={"loader"}/>
+      <img src={loader} alt={"loader"} />
     </div>
   );
 };

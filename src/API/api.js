@@ -5,8 +5,8 @@ const instanse = axios.create({
 });
 
 export const usersAPI = {
-  getUser: (user) => {
-    return instanse.get(`users/${user}`).then((response) => response.data);
+  getUser: (user) => {    
+    return instanse.get(`users/${user}`).then((response) => response.data)   
   },
   getRepos: ( currentPage, pageSize,user ) => {
     return instanse

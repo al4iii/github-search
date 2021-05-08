@@ -7,7 +7,7 @@ const Header = () => {
   return (
     <div className={styles.header}>
       <div className={styles.img}>
-        <img src={logo} />
+      <img src={logo} />
       </div>
       <div className={styles.textarea}>
         <SearchUsers />

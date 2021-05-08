@@ -1,5 +1,5 @@
 .header {
-    background-color: blue;
+    background-color: #0064EB;
     height: 75px;
     display: grid;
     grid-template-columns: 1fr 2fr 3fr;
@@ -11,8 +11,8 @@
     justify-self: center;
     width: 40px;
 }
-.img > img {
-    
+
+.img>img {
     width: 40px;
 }
 
@@ -22,8 +22,6 @@
 }
 
 .button {
-    /* display: grid; 
-    justify-content: flex-start; */
     margin-left: 7px;
 }
 

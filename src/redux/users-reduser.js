@@ -3,7 +3,7 @@ import { usersAPI } from "../API/api";
 const SET_USERS = "users/SET_USERS";
 const TOGGELE_IS_FETCHING = "users/TOGGELE_IS_FETCHING";
 const SET_REPOS = "users/SET_REPOS";
-const SET_REPOS_LENGTH = "users/SET_REPOS_LENGTH";
+const SET_IS_FOUND = "users/SET_IS_FOUND";
 const SET_USER_NAME = "users/SET_USER_NAME";
 const SET_TOTAL_COUNT = "users/SET_TOTAL_COUNT";
 const SET_CURRENT_PAGE = "users/SET_CURRENT_PAGE";
@@ -11,11 +11,12 @@ const SET_CURRENT_PAGE = "users/SET_CURRENT_PAGE";
 let initialState = {
   userName: null,
   userProfile: null,
-  repos: null,
+  repos: [],
   toggleIsFetching: false,
   pageSize: 4,
   totalCount: 0,
   currentPage: 1,
+  isFound: null
 };
 
 const usersReducer = (state = initialState, action) => {
@@ -44,6 +45,11 @@ const usersReducer = (state = initialState, action) => {
         ...state,
         currentPage: action.currentPage,
       };
+    case SET_IS_FOUND:
+      return {
+        ...state,
+        isFound: action.isFound,
+      };
     default:
       return state;
   }
@@ -68,11 +74,12 @@ export const setCurrentPages = (currentPage) => ({
   type: SET_CURRENT_PAGE,
   currentPage,
 });
+export const setIsFound = (isFound) => ({ type: SET_CURRENT_PAGE, isFound });
 
 export const getUsers = (user) => async (dispatch) => {
   dispatch(toggleIsFetching(true));
-  dispatch(setUserName(user));
   let response = await usersAPI.getUser(user);
+  dispatch(setUserName(user));
   dispatch(setUserProfile(response));
   const currentPage = initialState.currentPage;
   const pageSize = initialState.pageSize;
