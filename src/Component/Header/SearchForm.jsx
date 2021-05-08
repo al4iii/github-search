@@ -7,10 +7,14 @@ const SearchUsers = () => {
   const dispatch = useDispatch();
   let [user, setUser] = useState("");
   const onStatusChenge = (e) => setUser(e.currentTarget.value);
-  const searchUser = () => dispatch(getUsers(user));
+  const searchUser = () => {
+    dispatch(getUsers(user));
+    setUser("");
+  };
   return (
     <div>
       <input
+        className={styles.input}
         autoFocus={true}
         value={user}
         onChange={onStatusChenge}

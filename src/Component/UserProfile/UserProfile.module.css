@@ -13,8 +13,8 @@
     width: 290px;
     height: 290px;
     border-radius: 200px;
-   
 }
+
 .img {
     justify-self: center;
 }
@@ -24,8 +24,7 @@
     background: #e0e0e0;
     box-shadow: 5px 5px 2px #5a5a5a, -5px -5px 2px #ffffff;
     margin: 15px;
-    width: 500px; 
-       
+    width: 500px;
 }
 
 .name {
@@ -35,23 +34,28 @@
     justify-self: center;
 }
 
-.login{
+.login {
     padding: 0 30px;
-    margin: 0; 
+    margin: 0;
     width: 20px;
     justify-self: center;
 }
 
-.followers{
+.followers {
     padding: 0 30px;
-    margin: 0; 
+    margin: 0;
     height: 150px;
     width: 250px;
     justify-self: center;
 }
+
 .description {
     padding: 15px 30px;
     margin: 0;
+}
+
+p {
+    font-size: 18px;
 }
 
 .paginator {
@@ -66,10 +70,14 @@
     justify-self: center;
 }
 
+.not_found {
+    text-align: center;
+}
+
 @media screen and (max-width: 930px) {
     .userprofile {
         grid-template-columns: 500px;
-        grid-template-rows: 1fr 1fr 100px;        
+        grid-template-rows: 1fr 1fr 100px;
         justify-content: center;
         justify-items: center;
     }
@@ -88,7 +96,10 @@
     }
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 550px) {
+    .userprofile {
+        grid-template-rows: 400px 1fr 100px;
+    }
     .repos {
         grid-row: 2/3;
         grid-column: 1/2;
@@ -103,6 +114,5 @@
         width: 200px;
         height: 200px;
         border-radius: 200px;
-       
     }
 }

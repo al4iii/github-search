@@ -10,13 +10,16 @@ const Content = () => {
   return (
     <div className={styles.content}>
       {profile === null ? (
-        <h2 className={styles.h2}>         
+        <h2 className={styles.h2}>
           <SearchOutlined />
           <p>Start with search a Github user</p>
         </h2>
       ) : (
         <UserProfile />
       )}
+      <div className={styles.footer}>        
+        Creater by <a href={"https://github.com/al4iii"}>al4iii</a>
+      </div>
     </div>
   );
 };

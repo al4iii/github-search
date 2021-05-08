@@ -8,3 +8,13 @@ content {
     padding: auto;
     color: gray;
 }
+
+.footer {
+    text-align: center;
+    margin-top: 200px;
+}
+
+.footer>a {
+    text-decoration: none;
+    color: #9e0303;
+}

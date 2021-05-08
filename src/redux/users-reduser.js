@@ -16,7 +16,7 @@ let initialState = {
   pageSize: 4,
   totalCount: 0,
   currentPage: 1,
-  isFound: null
+  isFound: null,
 };
 
 const usersReducer = (state = initialState, action) => {
@@ -55,41 +55,34 @@ const usersReducer = (state = initialState, action) => {
   }
 };
 
-export const setUserProfile = (userProfile) => ({
-  type: SET_USERS,
-  userProfile,
-});
+export const setUserProfile = (userProfile) => ({ type: SET_USERS, userProfile });
 export const setRepos = (repos) => ({ type: SET_REPOS, repos });
 export const setUserName = (userName) => ({ type: SET_USER_NAME, userName });
-
-export const toggleIsFetching = (isFetching) => ({
-  type: TOGGELE_IS_FETCHING,
-  isFetching,
-});
-export const setTotalReposCount = (totalCount) => ({
-  type: SET_TOTAL_COUNT,
-  totalCount,
-});
-export const setCurrentPages = (currentPage) => ({
-  type: SET_CURRENT_PAGE,
-  currentPage,
-});
-export const setIsFound = (isFound) => ({ type: SET_CURRENT_PAGE, isFound });
+export const toggleIsFetching = (isFetching) => ({ type: TOGGELE_IS_FETCHING, isFetching });
+export const setTotalReposCount = (totalCount) => ({ type: SET_TOTAL_COUNT, totalCount });
+export const setCurrentPages = (currentPage) => ({ type: SET_CURRENT_PAGE, currentPage });
+export const setIsFound = (isFound) => ({ type: SET_IS_FOUND, isFound });
 
 export const getUsers = (user) => async (dispatch) => {
   dispatch(toggleIsFetching(true));
-  let response = await usersAPI.getUser(user);
   dispatch(setUserName(user));
-  dispatch(setUserProfile(response));
-  const currentPage = initialState.currentPage;
-  const pageSize = initialState.pageSize;
-  dispatch(getRepos(currentPage, pageSize, user));
-  dispatch(getReposLength(user));
-  dispatch(setCurrentPages(currentPage));
-  dispatch(toggleIsFetching(false));
+  let response = await usersAPI.getUser(user);
+  if (response.status === 200) {
+    dispatch(setIsFound(true));
+    dispatch(setUserProfile(response.data));
+    const currentPage = initialState.currentPage;
+    const pageSize = initialState.pageSize;
+    dispatch(getRepos(currentPage, pageSize, user));
+    dispatch(getReposLength(user));
+    dispatch(setCurrentPages(currentPage));
+  } else if (response.status === 404) {
+    dispatch(setIsFound(false));
+    dispatch(toggleIsFetching(false));
+  }
 };
 
-export const getRepos = ( currentPage, pageSize = initialState.pageSize, user = initialState.userName ) => async (dispatch) => {
+export const getRepos = ( currentPage, pageSize = initialState.pageSize, user = initialState.userName
+  ) => async (dispatch) => {
   dispatch(toggleIsFetching(true));
   dispatch(setCurrentPages(currentPage));
   let response = await usersAPI.getRepos(currentPage, pageSize, user);
