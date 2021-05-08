@@ -10,7 +10,7 @@ import { TeamOutlined, UserOutlined, CloseCircleOutlined } from "@ant-design/ico
 
 const User = () => {
   const totalItemsCount = useSelector(totalCountSelector);
-  const pageSize = useSelector(pageSizeSelector);  
+  const pageSize = useSelector(pageSizeSelector);
   const currentPage = useSelector(currentPageSelector);
   const dispatch = useDispatch();
   const profile = useSelector(userProfileSelector);
@@ -20,6 +20,7 @@ const User = () => {
   };
   const repos = useSelector(reposSelector);
   let userName = useSelector(userNameSelector);
+
   return (
     <div className={slyles.userprofile}>
       <div className={slyles.profile}>
@@ -27,11 +28,13 @@ const User = () => {
           <img src={profile.avatar_url} alt={"avatar"} />
         </div>
         <div className={slyles.name}>
-          <a target="_blank" rel = "noreferrer" href={`https://github.com/${userName}`}>
-            <h3> {profile.name}</h3>
+          <h3> {profile.name}</h3>
+        </div>
+        <div className={slyles.login}>
+          <a target="_blank" rel="noreferrer" href={`https://github.com/${userName}`} >
+            {profile.login}
           </a>
         </div>
-        <div className={slyles.login}>{profile.login}</div>
         <div className={slyles.followers}>
           <TeamOutlined /> {profile.followers} followers <UserOutlined />{" "}
           {profile.following} following
@@ -51,7 +54,9 @@ const User = () => {
           )}
         </div>
       </div>
-      {totalItemsCount === 0 ? ( "" ) : (
+      {totalItemsCount === 0 ? (
+        ""
+      ) : (
         <Pagination
           className={slyles.paginator}
           current={currentPage}
